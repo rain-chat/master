@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#bar {
+				width: 500px;
+				height: 40px;
+				background-color: #808080;
+				position: relative;
+				overflow: hidden;
+			}
+
+			#bar_val {
+				width: 1%;
+				height: 40px;
+				background-color: #00ff00;
+				padding: 10px 0;
+				position: absolute;
+			}
+
+			.alert {
+				position: relative;
+				display: inline-block;
+				cursor: pointer;
+				user-select: none;
+			}
+
+			.alert .text {
+				visibility: hidden;
+				width: 160px;
+				background-color: #55ff00;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 8px 0;
+				position: absolute;
+				z-index: 1;
+				bottom: 125%;
+				left: 50%;
+				margin-left: -80px;
+			}
+
+			.alert .text::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: #55ff00 transparent transparent transparent ;
+			}
+
+			.alert .show {
+				visibility: visible;
+				animation: opaci 1s;
+			}
+
+			@keyframes opaci {
+				from {
+					opacity: 0;
+				}
+
+				to {
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<p>这是一个进度条</p>
+			<div id="bar">
+				<div id="bar_val" align="right">
+			
+				</div>
+			</div>
+			<button id="btn">开始</button>
+			<p>这是一个弹窗示例</p>
+			<div class="alert" onclick="myFunction()">
+				这是一个<b>弹窗</b>
+				<span class="text" id="myalert">这是一条信息！</span>
+			</div>
+		</center>
+		<script type="text/javascript">
+			function showStatus() {
+				var bv = document.getElementById("bar_val");
+				var val = 0;
+				var id = setInterval(upper, 10);
+
+				function upper() {
+					bv.innerText = val.toFixed(0) + "%";
+					if (val < 100) {
+						val += 0.1;
+						bv.style.width = val + "%";
+					} else clearInterval(id);
+				}
+
+			}
+			var bt = document.getElementById("btn");
+			bt.onclick = function() {
+				showStatus()
+			};
+
+			function myFunction() {
+				var alert = document.getElementById("myalert");
+				alert.classList.toggle("show");
+			}
+		</script>
+	</body>
+</html>

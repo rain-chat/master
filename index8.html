@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			<!DOCTYPE HTML>
+		</title>
+		<style type="text/css">
+			#screen{
+				width: 300px;
+				height: 200px;
+				border: #000000 2px solid;
+				position: relative;
+				cursor: default;
+			}
+			#point{
+				width:50px;
+				height:50px;
+				border-radius:50px;
+				background-color: #55ffff;
+				display:none;
+				font-size: 10px;
+				position: absolute;
+			}
+			#box{
+				width:100px;
+				height:50px;
+				display:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="screen">
+			<div id="point">
+				
+			</div>
+		</div>
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			//输出容器坐标
+			var sc=document.getElementById("screen");
+			var p=document.getElementById("point");
+			sc.onmousemove=function(event){
+				p.style.display="block";
+				var x=event.pageX-sc.offsetLeft;
+				var y=event.pageY-sc.offsetTop;
+				p.style.left=x+"px";
+				p.style.top=y+"px";
+				p.innerText="x="+x+" y="+y;
+			}
+			sc.onmouseout=function(){
+				p.style.display="none";
+			}
+		</script>
+	</body>
+</html>
