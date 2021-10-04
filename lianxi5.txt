@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>play music</title>
+		<style type="text/css">
+			.audio{
+				width:400px;
+				height:480px;
+				border-radius:20px;
+				margin: auto;
+				position:relative;
+				background-color: #dadada;
+			}
+			#control{
+				position: absolute;
+				bottom: 50px;
+				left:50%;
+				margin-left:-100px;
+			}
+			#control button{
+				width:50px;
+				height:50px;
+				border-radius: 50px;
+				border-style: none;
+				box-shadow:0 0 2px #000000;
+				background-color: #5f5f5f;
+				cursor: pointer;
+				color: #ffffff;
+			}
+			#control button:active{
+				background-color: #2d2d2d;
+			}
+			#cd{
+				width:300px;
+				height:300px;
+				margin: auto;
+				position: relative;
+				top:10px;
+				border-radius: 300px;
+				box-shadow:0 0 4px #000000;
+				background-color: #23232F;
+			}
+			#cover{
+				width:250px;
+				height:250px;
+				position:absolute;
+				left:25px;
+				top: 25px;
+				overflow: hidden;
+				border-radius: 250px;
+				box-shadow:0 0 2px #888888;
+				background-color: #ffffff;
+			}
+			
+			#process {
+				width: 240px;
+				height: 5px;
+				margin: auto;
+				margin-top: 40px;
+				border-radius: 2px;
+				background-color: #a7a7a7;
+				position: relative;
+				overflow:hidden;
+			}
+			
+			#bar {
+				width: 0px;
+				height: 5px;
+				border-radius: 2px;
+				background-color: #f6f6f6;
+				position:relative;
+			}
+			#sound{
+				width: 10px;
+				height: 300px;
+				border-radius: 2px;
+				float: left;
+				background-color: #575757;
+				position: absolute;
+				bottom: 20px;
+			}
+			#volume{
+				width: 10px;
+				height: 300px;
+				border-radius: 2px;
+				background-color: #aeaeae;
+				position: absolute;
+				bottom: 0;
+			}
+			.anime{
+				-webkit-animation-delay: 0;
+				-webkit-animation-duration: 600s;
+				-webkit-animation-timing-function: linear;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-name:'round';
+				-webkit-animation-play-state:paused;
+			}
+			@-webkit-keyframes round{
+				to{
+					transform:rotate(360rad);
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="audio">
+			<div id="cd" class="anime">
+				<div id="cover">
+					<img src="img/9.jpg" width="500px">
+				</div>
+			</div>
+			<audio loop="loop">
+				<source  src="./audio/music1.mp3"></source>
+			</audio>
+			<div id="sound">
+				<div id="volume">
+					
+				</div>
+			</div>
+			<div id="process">
+				<div id="bar">
+					
+				</div>
+			</div>
+			
+			<div id="control">
+				<button id="bt0">Play</button>
+				<button id="bt1">Loop</button>
+				<button id="bt2">Next</button>
+				<button id="bt3">Prev</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var paly=document.getElementById("bt0");
+			var type=document.getElementById("bt1");
+			var next=document.getElementById("bt2");
+			var previous=document.getElementById("bt3");
+			var audio=document.querySelector("audio");
+			var anime=document.getElementById("cd");
+			
+			function audioPause(){
+				audio.pause();
+				paly.innerHTML="Play";
+				anime.style.webkitAnimationPlayState="paused";
+				
+			}
+			function audioPlay(){
+				audio.play();
+				paly.innerHTML="Pause";
+				anime.style.webkitAnimationPlayState="running";	
+			}
+			
+			paly.onclick=function(){
+				if(audio.paused) audioPlay();
+				else  audioPause();
+			}
+			var typ=new Array("Loop","Single");
+			var music=new Array("大地","盘旋")
+			var pos=0;
+			type.onclick=function(){
+				pos=(pos+1)%2;
+				type.innerText=typ[pos];
+				if(typ[pos]=="Loop") audio.loop=true;
+				if(typ[pos]=="Single") audio.loop=false;
+			}
+			
+			var nex=0;
+			function numberRange(origin,value,Range){
+				origin=(origin+value)%Range;
+				origin=origin<0?Range-1:origin;
+				origin=origin>Range-1?0:origin;
+				return origin;
+			}
+			function changeMusic(value,isAutoPlay){
+				nex=numberRange(nex,value,music.length);
+				audio.src="./audio/"+music[nex]+".mp3"
+				var cover=document.querySelector("#cover img");
+				cover.src="img/"+music[nex]+".jpg";
+				if(isAutoPlay) audioPlay();
+				else audioPause();
+			}
+			
+			next.onclick=function(){changeMusic(1,true);}
+			previous.onclick=function(){changeMusic(-1,true);}
+			var load=changeMusic(1,false);
+			
+			var bar=document.getElementById("bar");
+			var process= document.getElementById("process");
+			var id=setInterval(function(){
+				if(audio.currentTime>=audio.duration) anime.style.webkitAnimationPlayState="paused";
+				bar.style.width=audio.currentTime/audio.duration*100+'%';
+			},1);
+			
+			process.onclick=function(event){
+				var value=(event.clientX-process.clientLeft)/this.clientWidth-2.16;
+				bar.style.width=value+"%";
+				volume.innerText=value;
+				audio.currentTime=value*audio.duration;
+			}
+			var sound=document.getElementById("sound");
+			var volume=document.getElementById("volume");
+			sound.onclick=function(event){
+				var value=event.clientY-this.offsetTop-8;
+				var y=(sound.clientHeight-value)/sound.clientHeight;
+				volume.style.height=y*sound.clientHeight+"px";
+				audio.volume=y;
+			}
+		</script>
+	</body>
+</html>
