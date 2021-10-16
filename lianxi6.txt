@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo</title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				background-color: #EEEEEE;
+			}
+			#title{
+				height:95%;
+				width:40%;
+				margin: auto;
+				border-radius: 2px;
+				background-color: #efefef;
+				overflow: hidden;
+			}
+			#title a{
+				height:100%;
+				width:50%;
+			}
+			#topseach{
+				height:15%;
+				width:100%;
+				position: fixed;
+				background-color: #ffffff;
+				z-index: 10;
+			}
+			#topseach button{
+				border:none;
+				position: absolute;
+				height:95%;
+				width:10%;
+			}
+			#search{
+				height:10%;
+				width:80%;
+				position: fixed;
+				top:16%;
+				left:10%;
+				background-color: #FFFFFF;
+				box-shadow: 0 0 4px #333333;
+				margin: auto;
+				z-index: 10;
+				display:none;
+			}
+			#search input{
+				outline:none;
+				border:none;
+				color:#bababa;
+				font-size:1rem;
+				height: 100%;
+				width: 100%;
+			}
+			
+			#search input:focus{
+				color: #000000;
+			}
+			
+			#mybody{
+				background-color: #e6e6e6;
+				position: absolute;
+				z-index: -10;
+			}
+			
+			#context{
+				background-color: #e4e4e4;
+				position: absolute;
+				top:70%;
+				width:90%;
+				left:5%;
+				height:auto;
+				z-index:0;
+				box-shadow: 0 0 5px #333333;
+			}
+			#context p,h3{
+				margin-left: 10%;
+				margin-right: 10%;
+			}
+			#process{
+				background-color: #00FF00;
+				width: 10%;
+				height: 5%;
+				position: absolute;
+				bottom: 0;
+			}
+			.menu{
+				width: 10%;
+				height:auto;
+				background-color: #f5f5f5;
+				position:fixed;
+				right: 0;
+				top:14%;
+				z-index:10;
+				display: none;
+			}
+			.menu ul{
+				padding: 0;
+				margin: 0;
+			}
+			.menu li{
+				margin:0 0 2px 0;
+				background-color:#d6d6d6;
+				list-style: none;
+				text-align: center;
+				cursor: pointer;
+			}
+			.menu li:hover{
+				background-color: #f5f5f5;
+			}
+			.menu a{
+				text-decoration: none;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="topseach">
+			<button id="bt0" type="button" style="left:0">搜索</button>
+			<button id="bt1" type="button" style="right:0">菜单</button>
+			<div id="title">
+				<a href="index11.html" ><img src="img/1.png" width="100%"></a>
+			</div>
+			
+			<div id="process">
+			</div>
+		</div>
+		<div id="search">
+			<input type="text" id="inner" placeholder="请输入关键词" />
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="index10.html">音乐</a></li>
+				<li><a href=" ">视频</a></li>
+				<li><a href="https://www.ankama.com/en/games/super-nano-blaster">游戏</a></li>
+			</ul>	
+		</div>
+		<div id="mybody">
+				<img src="img/4.png"  width="100%">
+				<div id="context">
+					<h3>关雎</h3>
+					<p>关关雎鸠，在河之洲。窈窕淑女，君子好逑。</p>
+					<p>参差荇菜，左右流之。窈窕淑女，寤寐求之。</p>
+					<p>求之不得，寤寐思服。悠哉悠哉，辗转反侧。</p>
+					<p>参差荇菜，左右采之。窈窕淑女，琴瑟友之。</p>
+					<p>参差荇菜，左右芼之。窈窕淑女，钟鼓乐之。</p>
+					<h3>葛覃</h3>
+					<p>葛之覃兮，施于中谷，维叶萋萋。黄鸟于飞，集于灌木，其鸣喈喈。</p>
+					<p>葛之覃兮，施于中谷，维叶萋萋。黄鸟于飞，集于灌木，其鸣喈喈。</p>
+					<p>葛之覃兮，施于中谷，维叶莫莫。是刈是濩，为絺为綌，服之无斁。</p>
+					<p>言告师氏，言告言归。薄污我私。薄浣我衣。害浣害否？归宁父母</p>
+					<h3>子衿</h3>
+					<p>青青子衿，悠悠我心。纵我不往，子宁不嗣音</p>
+					<p>青青子佩，悠悠我思。纵我不往，子宁不来？</p>
+					<p>挑兮达兮，在城阙兮。一日不见，如三月兮！</p>
+					<h3>越人歌</h3>
+					<p>今夕何夕兮，搴舟中流。</p>
+					<p>今日何日兮，得与王子同舟。</p>
+					<p>蒙羞被好兮，不訾诟耻。</p>
+					<p>心几烦而不绝兮，得知王子。</p>
+					<p>山有木兮木有枝，心悦君兮君不知。</p>
+					<h3>将进酒</h3>
+					<p>君不见黄河之水天上来，奔流到海不复回。</p>
+					<p>君不见高堂明镜悲白发，朝如青丝暮成雪。</p>
+					<p>人生得意须尽欢，莫使金樽空对月。</p>
+					<p>天生我材必有用，千金散尽还复来。</p>
+					<p>烹羊宰牛且为乐，会须一饮三百杯。</p>
+					<p>岑夫子，丹丘生，将进酒，杯莫停。</p>
+					<p>与君歌一曲，请君为我倾耳听。</p>
+					<p>钟鼓馔玉不足贵，但愿长醉不愿醒。</p>
+					<p>古来圣贤皆寂寞，惟有饮者留其名。</p>
+					<p>陈王昔时宴平乐，斗酒十千恣欢谑。</p>
+					<p>主人何为言少钱，径须沽取对君酌。</p>
+					<p>五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。</p>
+					
+				</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var bt0=document.getElementById("bt0");
+		var bt1=document.getElementById("bt1");
+		var seach=document.getElementById("search");
+		var menu=document.getElementsByClassName("menu");
+		bt0.onclick=function(){Display(seach,true);Display(menu[0],false);}
+		bt1.onclick=function(){Display(menu[0],true);Display(seach,false);}
+		var con=document.getElementById("context");
+		con.onclick=function(){Display(seach,false);Display(menu[0],false);}
+		function Display(obj,isDisplay) {
+			if(isDisplay){
+				if(obj.style.display=="block") obj.style.display="none";
+				else obj.style.display="block";
+			}
+			else obj.style.display="none";
+		}
+		var inner=document.getElementById("inner");
+		inner.onkeyup=function(){
+			var p=document.getElementById("context").children;
+			var res=document.getElementById("result");
+			for(var i=0;i<p.length;i++){
+				var val=p[i].innerText.replace(inner.value,"<span style='color:red'>"+inner.value+"</span>");
+				p[i].innerHTML=val;
+			}
+		}
+		setInterval(function(){
+			var pos=document.getElementById("mybody");
+			var pro=document.getElementById("process");
+			pro.style.width=document.documentElement.scrollTop/(pos.scrollHeight-pos.scrollWidth/2)*100+"%";
+		},10);
+	</script>
+</html>
